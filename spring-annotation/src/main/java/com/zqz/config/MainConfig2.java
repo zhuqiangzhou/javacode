@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
 
 import com.zqz.beans.Color;
+import com.zqz.beans.ColorFactoryBean;
 import com.zqz.beans.Person;
 import com.zqz.beans.Red;
 import com.zqz.condition.LinuxCondition;
@@ -68,5 +69,14 @@ public class MainConfig2 {
 	 * 	@Import,容器中就会自动注册这个组件，id默认是全类名
 	 * 	@ImportSelector:返回需要导入的组件的全类名数组
 	 *  @ImportBeanDefinitionRegistrar
+	 * 4)使用spring提供的FactoryBean（工厂bean）
+	 * 	1）.默认获取的是工厂bean调用getObject创建对象
+	 * 	2）.要获取工厂Bean本身，我们需要给id前面加一个&
+	 * 
 	 */
+	@Bean
+	public ColorFactoryBean colorFactoryBean() {
+		
+		return new ColorFactoryBean();
+	}
 }

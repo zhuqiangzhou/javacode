@@ -57,5 +57,10 @@ public class IOCTest {
 	@Test
 	public void testImport() {
 		print(applicationContext);
+		Object bean2 = applicationContext.getBean("colorFactoryBean");
+		Object bean = applicationContext.getBean("colorFactoryBean");
+		System.out.println("bean¿‡–Õ£∫"+bean.getClass());	
+		System.out.println(bean == bean2);
+		
 	}
 }

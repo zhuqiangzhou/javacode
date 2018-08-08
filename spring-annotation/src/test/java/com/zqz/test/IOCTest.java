@@ -7,7 +7,6 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.core.env.ConfigurableEnvironment;
 
 import com.zqz.beans.Person;
-import com.zqz.config.MainConfig;
 import com.zqz.config.MainConfig2;
 
 public class IOCTest {
@@ -21,7 +20,6 @@ public class IOCTest {
 		}
 	}
 	
-	@SuppressWarnings("resource")
 	@Test
 	public void test() {
 		print(applicationContext);

@@ -1,5 +1,8 @@
 package com.zqz.beans;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Car {
 	
 	public Car() {

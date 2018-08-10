@@ -6,6 +6,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
+import com.zqz.beans.Car;
+import com.zqz.beans.Color;
 import com.zqz.dao.BookDao;
 
 /**
@@ -25,11 +27,16 @@ import com.zqz.dao.BookDao;
  * 			@Inject :需要导入javax inject依赖，和@Autowired功能相同，没有required=false功能
  * 
  * 	AutowiredAnnotationBeanPostProcessor：解析完成自动装配功能
+ * 
+ * 3.@Autowired:构造器，参数，方法，属性；都是从容器中获取参数组件的值
+ * 		1）：标注在方法上
+ * 		2):标注在构造器上：如果组件只有一个有参构造器，这个有参构造器的@autowired可以省略，参数位置的组件还是可以自动从容器中获取
+ * 		3）：放在参数位置
  * @author xg
  *
  */
 @Configuration
-@ComponentScan({"com.zqz.controller","com.zqz.service","com.zqz.dao"})
+@ComponentScan({"com.zqz.controller","com.zqz.service","com.zqz.dao","com.zqz.beans"})
 public class MainConfigOfAutowired {
 	
 	@Primary
@@ -38,5 +45,12 @@ public class MainConfigOfAutowired {
 		BookDao bookDao = new BookDao();
 		bookDao.setLabel("2");
 		return  bookDao;
+	}
+	
+	@Bean
+	public Color color(Car car){
+		Color color = new Color();
+		color.setCar(car);
+		return color;
 	}
 }
